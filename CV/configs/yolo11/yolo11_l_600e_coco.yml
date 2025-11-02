@@ -11,6 +11,7 @@ width_mult: 1.0
 
 log_iter: 50
 snapshot_epoch: 10
+pretrain_weights: https://bj.bcebos.com/v1/paddledet/models/yolo11_l_600e_coco.pdparams
 weights: output/yolo11_l_600e_coco/model_final
 
 

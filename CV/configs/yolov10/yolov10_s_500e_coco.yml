@@ -10,6 +10,7 @@ width_mult: 0.50
 
 log_iter: 50
 snapshot_epoch: 10
+pretrain_weights: https://bj.bcebos.com/v1/paddledet/models/yolov10_s_500e_coco.pdparams
 weights: output/yolov10_s_500e_coco/model_final
 
 YOLOv10CSPDarkNet:

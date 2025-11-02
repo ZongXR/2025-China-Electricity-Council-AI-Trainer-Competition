@@ -1,4 +1,5 @@
 numpy < 1.24
+paddlepaddle-gpu==3.0.0
 tqdm
 typeguard
 visualdl>=2.2.0

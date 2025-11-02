@@ -1,4 +1,4 @@
-worker_num: 4
+worker_num: 24
 eval_height: &eval_height 640
 eval_width: &eval_width 640
 eval_size: &eval_size [*eval_height, *eval_width]

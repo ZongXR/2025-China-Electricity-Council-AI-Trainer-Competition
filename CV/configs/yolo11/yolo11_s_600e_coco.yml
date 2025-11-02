@@ -6,16 +6,17 @@ _BASE_: [
   '_base_/yolo11_reader_high_aug.yml',
 ]
 
+pretrain_weights: https://bj.bcebos.com/v1/paddledet/models/yolo11_s_600e_coco.pdparams
+weights: output/yolo11_s_600e_coco/model_final
 depth_mult: 0.5
 width_mult: 0.5
 
 log_iter: 50
-snapshot_epoch: 10
-weights: output/yolo11_s_600e_coco/model_final
+snapshot_epoch: 1
 
 
 TrainReader:
-  batch_size: 16 # default 8 gpus, total bs = 128
+  batch_size: 8 # default 8 gpus, total bs = 128
 
 TrainDataset:
   refine_bbox: True

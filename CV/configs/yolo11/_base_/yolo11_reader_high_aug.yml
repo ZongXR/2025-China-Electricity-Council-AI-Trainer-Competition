@@ -1,9 +1,9 @@
-input_height: &input_height 640
-input_width: &input_width 640
+input_height: &input_height 1920
+input_width: &input_width 1920
 input_size: &input_size [*input_height, *input_width]
-mosaic_epoch: &mosaic_epoch 590 # last 10 epochs close mosaic, totally 600 epochs as default
+mosaic_epoch: &mosaic_epoch 90 # last 10 epochs close mosaic, totally 600 epochs as default
 
-worker_num: 4
+worker_num: 24
 TrainReader:
   sample_transforms:
     - Decode: {}
@@ -23,25 +23,25 @@ TrainReader:
 
 
 # 1. common setting for high speed
-#EvalReader:
-#  sample_transforms:
-#    - Decode: {}
-#    - Resize: {target_size: *input_size, keep_ratio: True, interp: 1}
-#    - Pad: {size: *input_size, fill_value: [114., 114., 114.]}
-#    - NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
-#    - Permute: {}
-#  batch_size: 1
-
-
-# 2. rectangle resize and letterbox resize for high mAP
 EvalReader:
   sample_transforms:
     - Decode: {}
-    - YOLOv5KeepRatioResize: {target_size: *input_size, batch_shapes: True, size_divisor: 32, extra_pad_ratio: 0.5}
-    - LetterResize: {scale: *input_size, pad_val: 114, allow_scale_up: False}
+    - Resize: {target_size: *input_size, keep_ratio: True, interp: 1}
+    - Pad: {size: *input_size, fill_value: [114., 114., 114.]}
     - NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
     - Permute: {}
-  batch_size: 1 # only support bs=1
+  batch_size: 8
+
+
+# 2. rectangle resize and letterbox resize for high mAP
+#EvalReader:
+#  sample_transforms:
+#    - Decode: {}
+#    - YOLOv5KeepRatioResize: {target_size: *input_size, batch_shapes: True, size_divisor: 32, extra_pad_ratio: 0.5}
+#    - LetterResize: {scale: *input_size, pad_val: 114, allow_scale_up: False}
+#    - NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
+#    - Permute: {}
+#  batch_size: 1 # only support bs=1
 
 
 TestReader:

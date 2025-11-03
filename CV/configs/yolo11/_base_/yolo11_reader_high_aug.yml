@@ -7,6 +7,7 @@ worker_num: 24
 TrainReader:
   sample_transforms:
     - Decode: {}
+#    - Mixup: {alpha: 1.5, beta: 1.5}
     - MosaicPerspective: {mosaic_prob: 1.0, boxes_normed: False, target_size: *input_size, scale: 0.9}
     - RandomHSV: {hgain: 0.015, sgain: 0.7, vgain: 0.4}
     - RandomFlip: {}
@@ -19,6 +20,7 @@ TrainReader:
   drop_last: False
   use_shared_memory: True
   collate_batch: True
+#  mixup_epoch: 90
   mosaic_epoch: *mosaic_epoch
 
 
@@ -53,5 +55,5 @@ TestReader:
     - Pad: {size: *input_size, fill_value: [114., 114., 114.]}
     - NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
     - Permute: {}
-  batch_size: 1
+  batch_size: 8
   fuse_normalize: False

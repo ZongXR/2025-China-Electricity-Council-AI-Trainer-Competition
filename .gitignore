@@ -212,3 +212,4 @@ CV/bbox.json
 CV/dataset/coco/annotations
 CV/dataset/coco/train2017
 CV/dataset/coco/val2017
+CV/bbox_pr_curve

@@ -1,6 +1,6 @@
 worker_num: 24
-eval_height: &eval_height 640
-eval_width: &eval_width 640
+eval_height: &eval_height 1920
+eval_width: &eval_width 1920
 eval_size: &eval_size [*eval_height, *eval_width]
 
 TrainReader:
@@ -27,7 +27,7 @@ EvalReader:
     - Resize: {target_size: *eval_size, keep_ratio: False, interp: 2}
     - NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
     - Permute: {}
-  batch_size: 2
+  batch_size: 8
 
 TestReader:
   inputs_def:
@@ -37,4 +37,4 @@ TestReader:
     - Resize: {target_size: *eval_size, keep_ratio: False, interp: 2}
     - NormalizeImage: {mean: [0., 0., 0.], std: [1., 1., 1.], norm_type: none}
     - Permute: {}
-  batch_size: 1
+  batch_size: 4

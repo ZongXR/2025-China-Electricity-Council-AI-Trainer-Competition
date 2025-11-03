@@ -6,8 +6,8 @@ _BASE_: [
   './_base_/ppyoloe_plus_reader.yml',
 ]
 
-log_iter: 100
-snapshot_epoch: 5
+log_iter: 50
+snapshot_epoch: 1
 weights: output/ppyoloe_plus_crn_x_80e_coco/model_final
 
 pretrain_weights: https://bj.bcebos.com/v1/paddledet/models/ppyoloe_plus_crn_x_80e_coco.pdparams

@@ -1,0 +1,2 @@
+#!/bin/bash
+python /home/bml/storage/hierachies_example/hierarchical/analysis/evaluate.py --device "xpu" --max_seq_length 512 --batch_size 32 --bad_case_file "bad_case.txt" --dataset_dir "dataset" --params_path "./checkpoint"

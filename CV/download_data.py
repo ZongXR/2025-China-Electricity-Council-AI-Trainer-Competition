@@ -7,7 +7,7 @@ datasetId="5dedbd63759a4768937d4af13b33e182"
 #数据集版本
 dversion="V1"
 #下载数据保存目录
-fileSavePath="dataset"
+fileSavePath="download"
 DataGaixc.DownloadDataset(datasetId,dversion,fileSavePath)
 
 #数据集ID
@@ -15,5 +15,5 @@ datasetId="5dedbd63759a4768937d4af13b33e182"
 #数据集版本
 dversion="V2"
 #下载数据保存目录
-fileSavePath="dataset"
+fileSavePath="download"
 DataGaixc.DownloadDataset(datasetId,dversion,fileSavePath)

@@ -5,7 +5,7 @@ import random
 
 if __name__ == "__main__":
     result = []
-    for file in os.listdir("/home/bml/storage/dataset/train/Annotations"):
+    for file in os.listdir("/home/bml/storage/download/train/Annotations"):
         if file.endswith(".xml"):
             result.append(file.split(".")[0])
     val_labels = random.sample(result, int(0.1*len(result)))

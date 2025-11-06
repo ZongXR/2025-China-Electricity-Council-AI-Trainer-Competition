@@ -5,9 +5,9 @@ import xml.etree.ElementTree as ET
 
 if __name__ == "__main__":
     result = set()
-    for file in os.listdir("/home/bml/storage/dataset/train/Annotations"):
+    for file in os.listdir("/home/bml/storage/download/train/Annotations"):
         if file.endswith(".xml"):
-            tree = ET.parse(os.path.join("/home/bml/storage/dataset/train/Annotations", file))
+            tree = ET.parse(os.path.join("/home/bml/storage/download/train/Annotations", file))
             root = tree.getroot()
             for obj in root.findall("object"):
                 name = obj.find("name").text

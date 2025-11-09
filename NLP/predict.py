@@ -101,15 +101,15 @@ class Predictor:
             result = self.predict(text)
             for i in result.keys():
                 if i == 0:
-                    detect_result["predict1_code"] = result[i][0]
+                    detect_result["predict1_code"] = ",".join(result[i])
                 elif i == 1:
-                    detect_result["predict2_code"] = result[i][0]
+                    detect_result["predict2_code"] = ",".join(result[i])
                 elif i == 2:
-                    detect_result["predict3_code"] = result[i][0]
+                    detect_result["predict3_code"] = ",".join(result[i])
                 elif i == 3:
-                    detect_result["predict4_code"] = result[i][0]
+                    detect_result["predict4_code"] = ",".join(result[i])
                 elif i == 4:
-                    detect_result["predict5_code"] = result[i][0]
+                    detect_result["predict5_code"] = ",".join(result[i])
                     # lalel_i =
                 # print(result[i][0])
                 # print(type(result[i]))
@@ -164,21 +164,21 @@ class Predictor:
                     # logger.info(p)
                     if p > 0.1:
                         labels.append(self.label_list[i])
-
                 results.append(labels)
-            for t, labels in zip(data_ds.data, results):
-                hierarchical_labels = {}
-                # logger.info("text: {}".format(t["sentence"]))
-                # logger.info("prediction result: {}".format(",".join(labels)))
-                for label in labels:
-                    for i, l in enumerate(label.split("##")):
-                        if i not in hierarchical_labels:
-                            hierarchical_labels[i] = []
-                        if l not in hierarchical_labels[i]:
-                            hierarchical_labels[i].append(l)
-                # for d in range(len(hierarchical_labels)):
-                # logger.info("level {} : {}".format(d + 1, ",".join(hierarchical_labels[d])))
-                # logger.info("--------------------")
+
+        for t, labels in zip(data_ds.data, results):
+            hierarchical_labels = {}
+            # logger.info("text: {}".format(t["sentence"]))
+            # logger.info("prediction result: {}".format(",".join(labels)))
+            for label in labels:
+                for i, l in enumerate(label.split("##")):
+                    if i not in hierarchical_labels.keys():
+                        hierarchical_labels[i] = []
+                    if l not in hierarchical_labels[i]:
+                        hierarchical_labels[i].append(l)
+            # for d in range(len(hierarchical_labels)):
+            #     logger.info("level {} : {}".format(d + 1, ",".join(hierarchical_labels[d])))
+            # logger.info("--------------------")
         return hierarchical_labels
 
 

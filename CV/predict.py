@@ -123,12 +123,11 @@ class Predictor:
 
         # 读取coco标注数据，主要包含类别，及该类别对应的类别Id
         anno_file = self.trainer.dataset.get_anno()
-        # clsid2catid, catid2name = get_categories(
-        #     self.cfg.metric, anno_file=anno_file)
-        clsid2catid = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0}
-        catid2name = {0: '080002', 1: '刀闸A打开母', 2: '刀闸A打开公', 3: '刀闸A触头母', 4: '刀闸A触头公', 5: '080003', 6: '刀闸B闭合触头',
-                      7: '刀闸B打开横触头', 8: '刀闸B触头横触头', 9: '080001', 10: '刀闸A闭合触头', 11: '080004', 12: '刀闸B打开竖触头',
-                      13: '刀闸B触头竖触头'}
+        clsid2catid, catid2name = get_categories(self.cfg.metric, anno_file=anno_file)
+        # clsid2catid = {0: 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0, 11: 0, 12: 0, 13: 0}
+        # catid2name = {0: '080002', 1: '刀闸A打开母', 2: '刀闸A打开公', 3: '刀闸A触头母', 4: '刀闸A触头公', 5: '080003', 6: '刀闸B闭合触头',
+        #               7: '刀闸B打开横触头', 8: '刀闸B触头横触头', 9: '080001', 10: '刀闸A闭合触头', 11: '080004', 12: '刀闸B打开竖触头',
+        #               13: '刀闸B触头竖触头'}
         print('[INFO] catid2name = ', catid2name)
 
         # Run Infer
@@ -173,8 +172,7 @@ class Predictor:
                 self.trainer.status['original_image'] = np.array(image.copy())
 
                 end = start + bbox_num[i]
-                bbox_res = batch_res['bbox'][start:end] \
-                    if 'bbox' in batch_res else None
+                bbox_res = batch_res['bbox'][start:end] if 'bbox' in batch_res else None
                 start = end
 
                 # 借鉴visualize_results函数中的内容

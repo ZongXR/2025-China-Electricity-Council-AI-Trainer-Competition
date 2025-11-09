@@ -43,6 +43,7 @@ class Predictor:
             ### 加载模型
             ### self.model=load_model(model_path)
             self.device = "xpu"
+            paddle.set_device(self.device)
             self.model = AutoModelForSequenceClassification.from_pretrained("./checkpoint")
             self.tokenizer = AutoTokenizer.from_pretrained("./checkpoint")
             self.max_seq_length = 512

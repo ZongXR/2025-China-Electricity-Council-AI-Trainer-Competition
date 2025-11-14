@@ -1,2 +1,2 @@
 #!/bin/bash
-python /home/bml/storage/hierachies_example/hierarchical/predict_bak.py --device "xpu" --dataset_dir /home/bml/storage/dataset --params_path ./checkpoint/ --max_seq_length 512 --batch_size 32 --data_file test.txt --label_file label.txt
+python /home/bml/storage/hierachies_example/hierarchical/predict.py --device "xpu" --dataset_dir /home/bml/storage/dataset --params_path ./checkpoint/ --max_seq_length 512 --batch_size 32 --data_file test.txt --label_file label.txt

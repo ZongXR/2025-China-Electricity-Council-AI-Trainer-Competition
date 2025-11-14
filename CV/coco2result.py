@@ -21,9 +21,10 @@ if __name__ == '__main__':
         xmax = x["bbox"][2] + xmin
         ymax = x["bbox"][3] + ymin
         score = x["score"]
-        if image_name in result.keys():
-            result[image_name].append([category, xmin, ymin, xmax, ymax, score])
-        else:
-            result[image_name] = [[category, xmin, ymin, xmax, ymax, score]]
+        if score > 0.5:
+            if image_name in result.keys():
+                result[image_name].append([category, xmin, ymin, xmax, ymax, score])
+            else:
+                result[image_name] = [[category, xmin, ymin, xmax, ymax, score]]
     with open("output/result.json", "w") as f:
         json.dump(result, f)
